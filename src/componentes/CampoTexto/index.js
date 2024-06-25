@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import './CampoTexto.css'
 
-const CampoTexto = (props) => {
+const CampoTexto = ({ type = 'text', label, placeholder, valor, aoAlterado, obrigatorio = false}) => {
    
 
     const aoDigitado = (evento) => {
-        props.aoAlterado(evento.target.value)
+        aoAlterado(evento.target.value)
     }
 
     return (
-        <div className="campo-texto">
+        <div className={`campo-texto campo-texto-${type}`}>
             <label>
-                {props.label}
+                {label}
             </label>
-            <input value={props.valor} onChange={aoDigitado} required={props.obrigatorio} placeholder= {props.placeholder} />
+            <input type={type} value={valor} onChange={aoDigitado} required={obrigatorio} placeholder= {placeholder} />
         </div>
     )
 } //outro método de escrever o camponente no react
